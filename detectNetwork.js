@@ -13,6 +13,7 @@ var detectNetwork = function(cardNumber) {
     var visaPrefix = Number(cardNumber[0]);
     var visaLengths = [13, 16, 19];
     var masterCardPrefixes = [51, 52, 53, 54, 55]
+    var discoverPrefix = Number(cardNumber.split('').slice(0, 4).join(''));
   // The Diner's Club network always starts with a 38 or 39 and is 14 digits long
   if(cardNumber.length === 14 && prefix === 38 || prefix === 39){
   	return 'Diner\'s Club';
@@ -22,6 +23,8 @@ var detectNetwork = function(cardNumber) {
   	return 'Visa';
   } else if (masterCardPrefixes.indexOf(prefix) !== -1 && cardNumber.length === 16){
   	return 'MasterCard';
+  } else if (cardNumber.length === 16 || cardNumber.length === 19 && discoverPrefix === 6011){
+  	return 'Discover';
   }
   // The American Express network always starts with a 34 or 37 and is 15 digits long
 
