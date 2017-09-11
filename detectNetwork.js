@@ -21,7 +21,7 @@ var detectNetwork = function(cardNumber) {
   } else if (visaPrefix === 4 && visaLengths.indexOf(cardNumber.length) !== -1){
   	return 'Visa';
   } else if (masterCardPrefixes.indexOf(prefix) !== -1 && cardNumber.length === 16){
-  	return 'Master Card';
+  	return 'MasterCard';
   }
   // The American Express network always starts with a 34 or 37 and is 15 digits long
 
